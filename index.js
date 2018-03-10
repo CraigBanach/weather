@@ -50,7 +50,7 @@ function GetForecast() {
 }
 
 function GetWeatherData(city, countryCode) {
-  var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&APPID=e37c2aae9d042422f66716be5e424ddf`;
+  var url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&APPID=e37c2aae9d042422f66716be5e424ddf`;
 
   $.ajax(url)
     .done(function(data) {
