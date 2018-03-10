@@ -1,3 +1,46 @@
+var options = {
+  weekday: "long"
+}
+
+var weatherMap = {
+  "01d": {
+    icon: "fas fa-sun fa-5x",
+    bg  : "card bg sun"
+  },
+  "02d": {
+    icon: "fas fa-sun fa-5x",
+    bg  : "card bg sun"
+  },
+  "03d": {
+    icon: "fas fa-cloud fa-5x",
+    bg  : "card bg clouds"
+  },
+  "04d": {
+    icon: "fas fa-cloud fa-5x",
+    bg  : "card bg clouds"
+  },
+  "09d": {
+    icon: "fas fa-tint fa-inverse fa-5x",
+    bg  : "card bg rain"
+  },
+  "10d": {
+    icon: "fas fa-tint fa-inverse fa-5x",
+    bg  : "card bg rain"
+  },
+  "11d": {
+    icon: "fas fa-snowflake fa-5x",
+    bg  : "card bg snow"
+  },
+  "13d": {
+    icon: "fas fa-bolt fa-inverse fa-5x",
+    bg  : "card bg storm"
+  },
+  "50d": {
+    icon: "fas fa-angle-double-down fa-5x",
+    bg  : "card bg mist"
+  }
+}
+
 function GetForecast() {
   var city = $('#city').val();
   var countryCode = $('#countryCode').val();
@@ -33,13 +76,8 @@ function HandleApiData(data) {
 
   console.log(forecasts);
 
-  var options = {
-    weekday: "long"
-  }
-
   for (var i = 0; i < 5; i++) {
-    $(`#temp${i + 1}`).text(forecasts[i].main.temp.toCelcius(2) + "°C");
-    $(`#temp${i + 1}Title`).text(new Date(forecasts[i].dt_txt).toLocaleDateString("en-GB", options));
+    SetForecast(forecasts[i], i);
   }
 }
 
@@ -47,6 +85,13 @@ function CheckKeyPress(event) {
   if (event.keyCode == 13) {
     $('#submitButton').click();
   }
+}
+
+function SetForecast(forecast, index) {
+  $(`#temp${index + 1}`).text(forecast.main.temp.toCelcius(1) + "°C");
+  $(`#temp${index + 1}Title`).text(new Date(forecast.dt_txt).toLocaleDateString("en-GB", options));
+  $(`#temp${index + 1}Icon`).attr("class", weatherMap[forecast.weather[0].icon].icon);
+  $(`#card${index + 1}`).attr("class", weatherMap[forecast.weather[0].icon].bg);
 }
 
 Number.prototype.toCelcius = function(decimalPlaces){

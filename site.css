@@ -2,3 +2,31 @@
     align-items: center;
     margin: 0.5rem;
 }
+
+.bg {
+  background-size: cover;
+}
+
+.sun {
+  background-image: url("./backgrounds/sun.jpg");
+}
+
+.clouds {
+  background-image: url("./backgrounds/clouds.jpg");
+}
+
+.rain {
+  background-image: url("./backgrounds/rain.jpg");
+}
+
+.snow {
+  background-image: url("./backgrounds/snow.jpg");
+}
+
+.storm {
+  background-image: url("./backgrounds/storm.jpg");
+}
+
+.mist {
+  background-image: url("./backgrounds/mist.jpg");
+}
