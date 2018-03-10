@@ -24,9 +24,23 @@ function GetWeatherData(city, countryCode) {
 }
 
 function HandleApiData(data) {
-  var filtered = Object.filter(data.list, forecast => new Date(forecast.dt_txt).getHours() == 12);
-  console.log("filtered:");
-  console.log(filtered);
+  var forecasts = data.list;
+  forecasts = forecasts.filter(forecast => new Date(forecast.dt_txt).getHours() == 12);
+
+  forecasts.sort(function (a, b) {
+    return a.dt > b.dt;
+  })
+
+  console.log(forecasts);
+
+  var options = {
+    weekday: "long"
+  }
+
+  for (var i = 0; i < 5; i++) {
+    $(`#temp${i + 1}`).text(forecasts[i].main.temp.toCelcius(2) + "°C");
+    $(`#temp${i + 1}Title`).text(new Date(forecasts[i].dt_txt).toLocaleDateString("en-GB", options));
+  }
 }
 
 function CheckKeyPress(event) {
@@ -35,7 +49,6 @@ function CheckKeyPress(event) {
   }
 }
 
-Object.filter = (obj, predicate) =>
-  Object.keys(obj)
-        .filter( key => predicate( obj[key] ))
-        .reduce( (res, key) => (res[key] = obj[key], res), {} );
+Number.prototype.toCelcius = function(decimalPlaces){
+  return (this - 273.15).toFixed(decimalPlaces);
+}
