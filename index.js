@@ -1,5 +1,6 @@
 var ENTER_KEY = 13;
 var NOON = 12;
+var KELVIN_TO_CELCIUS = 273.15
 var errorText = `<span id="errorMessage">There was an error with the weather data. Please double-check the town and country code and try again.</span>`;
 
 var options = {
@@ -126,5 +127,5 @@ function LoadInitialCards() {
 }
 
 Number.prototype.toCelcius = function(decimalPlaces){
-  return (this - 273.15).toFixed(decimalPlaces);
+  return (this - KELVIN_TO_CELCIUS).toFixed(decimalPlaces);
 }
