@@ -6,7 +6,7 @@ After entering the desired city and country code, the data is fetched from https
 
 ## Usage instructions
 
-This project is currently displayed at https://craigbanach.github.io/weather/.
+This project is currently displayed at https://craigbanach.github.io/weather/
 
 You can run this project locally by downloading this repository and opening the index.html file in your favourite web browser (Not guaranteed to work in IE or Edge).
 
