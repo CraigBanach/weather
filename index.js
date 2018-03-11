@@ -1,4 +1,5 @@
 var ENTER_KEY = 13;
+var NOON = 12;
 var errorText = `<span id="errorMessage">There was an error with the weather data. Please double-check the town and country code and try again.</span>`;
 
 var options = {
@@ -72,7 +73,7 @@ function GetWeatherData(city, countryCode) {
 
 function HandleApiData(data) {
   var forecasts = data.list;
-  forecasts = forecasts.filter(forecast => new Date(forecast.dt_txt).getHours() == 12);
+  forecasts = forecasts.filter(forecast => new Date(forecast.dt_txt).getHours() == NOON);
 
   forecasts.sort(function (a, b) {
     return a.dt > b.dt;
