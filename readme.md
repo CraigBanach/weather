@@ -2,11 +2,11 @@
 
 Simple 5 day weather forecast webpage, written in HTML, CSS, Javacript and Jquery.
 
-After entering the desired city and country code, the data is fetched from openweathermap.org and the midday results are displayed to the user for the next 5 noons.
+After entering the desired city and country code, the data is fetched from [openweathermap.org] and the midday results are displayed to the user for the next 5 noons.
 
 ## Usage instructions
 
-This project is currently displayed at [https://craigbanach.github.io/weather/].
+This project is currently displayed at https://craigbanach.github.io/weather/.
 
 You can run this project locally by downloading this repository and opening the index.html file in your favourite web browser (Not guaranteed to work in IE or Edge).
 
