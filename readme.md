@@ -2,7 +2,7 @@
 
 Simple 5 day weather forecast webpage, written in HTML, CSS, Javacript and Jquery.
 
-After entering the desired city and country code, the data is fetched from [openweathermap.org] and the midday results are displayed to the user for the next 5 noons.
+After entering the desired city and country code, the data is fetched from [https://openweathermap.org] and the midday results are displayed to the user for the next 5 noons.
 
 ## Usage instructions
 
