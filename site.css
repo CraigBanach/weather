@@ -3,6 +3,10 @@
     margin: 0.5rem;
 }
 
+#errorMessage {
+  color: red;
+}
+
 .bg {
   background-size: cover;
 }

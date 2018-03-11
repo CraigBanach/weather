@@ -1,3 +1,6 @@
+var ENTER_KEY = 13;
+var errorText = `<span id="errorMessage">There was an error with the weather data. Please double-check the town and country code and try again.</span>`;
+
 var options = {
   weekday: "long"
 }
@@ -42,6 +45,8 @@ var weatherMap = {
 }
 
 function GetForecast() {
+  RemoveErrorMessage();
+
   var city = $('#city').val();
   var countryCode = $('#countryCode').val();
 
@@ -54,14 +59,13 @@ function GetWeatherData(city, countryCode) {
 
   $.ajax(url)
     .done(function(data) {
-      console.log(data);
+      if (!$('#card1').length) LoadInitialCards();
       HandleApiData(data);
     })
     .fail(function() {
-      alert("failure");
+      ShowErrorMessage();
     })
     .always(function() {
-      console.log("API call completed");
       $('#submitButton').removeAttr("disabled");
     })
 }
@@ -82,7 +86,7 @@ function HandleApiData(data) {
 }
 
 function CheckKeyPress(event) {
-  if (event.keyCode == 13) {
+  if (event.keyCode == ENTER_KEY) {
     $('#submitButton').click();
   }
 }
@@ -92,6 +96,32 @@ function SetForecast(forecast, index) {
   $(`#temp${index + 1}Title`).text(new Date(forecast.dt_txt).toLocaleDateString("en-GB", options));
   $(`#temp${index + 1}Icon`).attr("class", weatherMap[forecast.weather[0].icon].icon);
   $(`#card${index + 1}`).attr("class", weatherMap[forecast.weather[0].icon].bg);
+}
+
+function RemoveErrorMessage() {
+  $('#errorMessage').remove();
+}
+
+function ShowErrorMessage() {
+  $('#inputFields').after(errorText);
+}
+
+function LoadInitialCards() {
+  for (var i = 5; i > 0; i--) {
+    $('#spacingDiv').after(
+      `<div class="col-md-2">
+        <div id="card${i}" class="card">
+          <div class="card-body">
+            <i id="temp${i}Icon"></i>
+          </div>
+          <div class="card-body text-center">
+            <h2 id="temp${i}Title" class="card-title"></h2>
+            <h4 id="temp${i}"" class="card-text"></h4>
+          </div>
+        </div>
+      </div>`
+    )
+  }
 }
 
 Number.prototype.toCelcius = function(decimalPlaces){

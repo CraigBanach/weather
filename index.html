@@ -14,9 +14,9 @@
   <p>
     Enter a City to get a 5-day weather forecast.
   </p>
-  <p>
-    <input class="text-center" type="text" id="city" placeholder="City (London)" onkeyup="CheckKeyPress(event)"></input>
-    <input class="text-center" type="text" id="countryCode" placeholder="Country Code (UK)" onkeyup="CheckKeyPress(event)"></input>
+  <p id="inputFields">
+    <input class="text-center" type="text" id="city" placeholder="City (London)" onkeyup="CheckKeyPress(event)" required></input>
+    <input class="text-center" type="text" id="countryCode" placeholder="Country Code (UK)" onkeyup="CheckKeyPress(event)" maxlength="2" required></input>
   </p>
   <p>
     <button class="btn btn-success" id="submitButton" onclick="GetForecast()">
@@ -26,62 +26,8 @@
 </section>
 
 <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-2">
-    <div id="card1" class="card bg sun">
-      <div class="card-body">
-        <i id="temp1Icon" class="fas fa-sun fa-5x"></i>
-      </div>
-      <div class="card-body text-center">
-        <h2 id="temp1Title" class="card-title">Monday 11th</h2>
-        <h4 id='temp1' class="card-text">5°C</h4>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div id="card2" class="card bg clouds">
-      <div class="card-body">
-        <i id="temp2Icon" class="fas fa-sun fa-5x"></i>
-      </div>
-      <div class="card-body text-center">
-        <h2 id="temp2Title" class="card-title">Tuesday 12th</h2>
-        <h4 id='temp2' class="card-text">5°C</h4>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div id="card3" class="card bg rain">
-      <div class="card-body">
-        <i id="temp3Icon" class="fas fa-sun fa-5x"></i>
-      </div>
-      <div class="card-body text-center">
-        <h2 id="temp3Title" class="card-title">Wednesday 13th</h2>
-        <h4 id='temp3' class="card-text">5°C</h4>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div id="card4"class="card bg snow">
-      <div class="card-body">
-        <i id="temp4Icon" class="fas fa-sun fa-5x"></i>
-      </div>
-      <div class="card-body text-center">
-        <h2 id="temp4Title" class="card-title">Thursday 14th</h2>
-        <h4 id='temp4' class="card-text">5°C</h4>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div id="card5" class="card bg mist">
-      <div class="card-body">
-        <i id="temp5Icon" class="fas fa-sun fa-5x"></i>
-      </div>
-      <div class="card-body text-center">
-        <h2 id="temp5Title" class="card-title">Friday 15th</h2>
-        <h4 id='temp5' class="card-text">5°C</h4>
-      </div>
-    </div>
-  </div>
+  <div id="spacingDiv" class="col-md-1"></div>
+
   <div class="col-md-1"></div>
 </div>
 
